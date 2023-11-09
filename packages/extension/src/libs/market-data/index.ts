@@ -131,7 +131,8 @@ class MarketData {
           tokens[token.fiat_currency] = token;
         });
         return tokens;
-      });
+      })
+      .catch(() => ({} as Record<string, FiatMarket>));
     await this.#setFiatExchangeRates(fiatMarketData);
     await this.#setLastTimestamp(new Date().getTime());
   }
